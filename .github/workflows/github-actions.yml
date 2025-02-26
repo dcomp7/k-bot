@@ -30,7 +30,7 @@ jobs:
       - name: Install Chromium and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser fonts-ipafont-gothic
+          sudo apt-get install -y chromium fonts-ipafont-gothic
 
       - name: Set Puppeteer environment variables
         run: |

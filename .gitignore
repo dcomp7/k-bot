@@ -40,8 +40,5 @@ jspm_packages/
 # MacOS files
 .DS_Store
 
-# Lock files
-package-lock.json
-
 .vscode
 yarn.lock

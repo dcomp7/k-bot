@@ -15,7 +15,7 @@ RUN apt-get update && apt-get upgrade -y \
     lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
-# Configura o repositório do Node.js
+# Configura o repositório do Node.js para ser manipulado por apt
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash -
 
 # Instala dependências do sistema necessárias para o Chrome e bibliotecas gráficas

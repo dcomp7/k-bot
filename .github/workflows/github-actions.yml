@@ -98,25 +98,12 @@ jobs:
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: ${{ secrets.gcp_secret }}
 
       - name: Configure Docker in GCP
-        run: gcloud auth configure-docker
+        run: gcloud auth configure-docker us-east1-docker.pkg.dev
 
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/SEU-PROJETO-GCP/kbot:latest .
-          docker push gcr.io/SEU-PROJETO-GCP/kbot:latest
-
-      - name: Deploy to VM via SSH
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.GCP_VM_IP }}
-          username: ${{ secrets.GCP_VM_USER }}
-          key: ${{ secrets.GCP_SSH_KEY }}
-          script: |
-            docker pull gcr.io/SEU-PROJETO-GCP/kbot:latest
-            docker stop kbot || true
-            docker rm kbot || true
-            docker run -d -p 80:5000 --name kbot gcr.io/SEU-PROJETO-GCP/kbot:latest
-
+          docker build -t us-east1-docker.pkg.dev/kbot-452219/kbot-docker-images/kbot:latest .
+          docker push us-east1-docker.pkg.dev/kbot-452219/kbot-docker-images/kbot:latest

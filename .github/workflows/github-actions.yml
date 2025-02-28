@@ -98,7 +98,7 @@ jobs:
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.gcp_secret }}
+          credentials_json: ${{ secrets.GCP_SECRET }}
 
       - name: Configure Docker in GCP
         run: gcloud auth configure-docker us-east1-docker.pkg.dev
